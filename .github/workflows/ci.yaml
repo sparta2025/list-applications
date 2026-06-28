@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend-lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check app/
+
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker images
+        run: docker compose build
+      - name: Start services
+        run: docker compose up -d
+      - name: Wait for backend
+        run: |
+          for i in $(seq 1 30); do
+            curl -s http://localhost:8000/api/auth/login && break
+            sleep 2
+          done
+      - name: Test API
+        run: |
+          curl -f http://localhost:8000/api/requests
+          curl -f -X POST http://localhost:8000/api/requests \
+            -H "Content-Type: application/json" \
+            -d '{"title":"Тест","priority":"normal"}'
+          curl -f http://localhost:8000/api/requests
+      - name: Shutdown
+        run: docker compose down

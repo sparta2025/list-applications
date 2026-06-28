@@ -1,0 +1,85 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  margin: 0;
+  font-size: 22px;
+  color: #1a1a1a;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adminBadge {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.loginBtn,
+.logoutBtn {
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.loginBtn {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.loginBtn:hover {
+  background: #1d4ed8;
+}
+
+.logoutBtn {
+  background: #fff;
+  color: #374151;
+}
+
+.logoutBtn:hover {
+  background: #f3f4f6;
+}
+
+.main {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  flex: 1;
+}
+
+.sidebar {
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .main {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}

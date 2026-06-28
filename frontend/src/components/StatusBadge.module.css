@@ -1,0 +1,45 @@
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.new {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.in_progress {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.done {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.priority {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.p_low {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.p_normal {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.p_high {
+  background: #fee2e2;
+  color: #991b1b;
+}
