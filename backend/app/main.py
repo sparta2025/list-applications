@@ -1,10 +1,9 @@
-import uvicorn
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.config import BACKEND_PORT, FRONTEND_PORT
+from app.config import FRONTEND_PORT
 from app.database import init_db
 from app.auth import verify_admin
 from app.routes.requests import router as requests_router
